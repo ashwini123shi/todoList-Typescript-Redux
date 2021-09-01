@@ -6,11 +6,11 @@ import { editTodo, setDuplicateEditItem } from "../redux/todoAction";
 const ToDoEditReconfirm = (): React.ReactElement => {
   const dispatch = useDispatch();
   const { duplicateEditItem, duplicateEditItemId, duplicateItemIndex } = useSelector(state => state.todos);
-  const handleDuplicateEdit = () => {
+  const handleDuplicateEdit = (): void => {
     dispatch(editTodo(duplicateEditItemId, duplicateEditItem, true));//send id,value to reducer
   };
 
-  const handleEditDiscard = () => {
+  const handleEditDiscard = (): void => {
     dispatch(setDuplicateEditItem(false));
   };
 

@@ -1,16 +1,17 @@
-interface todoState {
-  counter: Number,
-  list: any,
-  duplicateItem: any,
-  duplicateEditItem: any,
-  duplicateEditItemId: any,
-  duplicateItemIndex: any,
-};
 interface taskItem {
   id: Number,
   task: String,
   completed: Boolean
 }
+interface todoState {
+  counter: Number,
+  list: Array<taskItem>,
+  duplicateItem: any,
+  duplicateEditItem: any,
+  duplicateEditItemId: any,
+  duplicateItemIndex: any,
+};
+
 
 const initalState: todoState = {
   counter: 0,
@@ -22,6 +23,7 @@ const initalState: todoState = {
 };
 
 const addTodo = (state: todoState, action: any) => {
+  //console.log(action);
   state.counter = Number(state.counter) + 1;
   state.list = [
     ...state.list,
@@ -30,6 +32,7 @@ const addTodo = (state: todoState, action: any) => {
   state.duplicateItem = false;
 };
 const updateTodo = (state: todoState, action: any) => {
+
   if (!!state.list.find((item: taskItem) => item.task === action.UpdatedTask)) {
     //fetch indexes of duplicate item
 
@@ -50,7 +53,7 @@ const updateTodo = (state: todoState, action: any) => {
   }
 }
 
-const deleteTodo = (state: todoState, action: any) => {
+const deleteTodo = (state: todoState, action: any): void => {
   state.list = state.list.filter(item => item.id !== Number(action.id));
   state.duplicateItem = false;
 };
@@ -101,22 +104,22 @@ const todos = (state: todoState = initalState, action: any) => {
     case 'DUPLICATE_ITEM':
       return {
         ...state,
-        duplicateItem: action.text
+        duplicateItem: action.duplicateItem
       };
     case 'DUPLICATE_EDIT_ITEM':
       return {
         ...state,
-        duplicateEditItem: action.text
+        duplicateEditItem: action.duplicateEditItem
       };
     case 'DUPLICATE_EDIT_ITEM_ID':
       return {
         ...state,
-        duplicateEditItemId: action.text
+        duplicateEditItemId: action.duplicateEditItemId
       };
     case 'DUPLICATE_ITEM_INDEX':
       return {
         ...state,
-        duplicateItemIndex: action.text
+        duplicateItemIndex: action.duplicateItemIndex
       };
     default:
       return state;

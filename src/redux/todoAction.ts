@@ -9,9 +9,9 @@ export const addTodo = (task: String) => {
 export const editTodo = (id: Number, UpdatedTask: String, isUpdateDuplicate?: Boolean) => {
   return {
     type: 'EDIT_TODO',
-    id: Number,
-    UpdatedTask: String,
-    isUpdateDuplicate: Boolean
+    id,
+    UpdatedTask,
+    isUpdateDuplicate
   };
 };
 
@@ -36,30 +36,30 @@ export const toggleTodo = (id: Number) => {
 };
 
 
-export const setDuplicateItem = (text: any) => {
+export const setDuplicateItem = (duplicateItem: any) => {
   return {
     type: 'DUPLICATE_ITEM',
-    text: String
+    duplicateItem
   };
 };
 
-export const setDuplicateEditItem = (text: any) => {
+export const setDuplicateEditItem = (duplicateEditItem: any) => {
   return {
     type: 'DUPLICATE_EDIT_ITEM',
-    text: String
+    duplicateEditItem
   };
 };
 
-export const setDuplicateEditItemId = (text: String) => {
+export const setDuplicateEditItemId = (duplicateEditItemId: String) => {
   return {
     type: 'DUPLICATE_EDIT_ITEM_ID',
-    text
+    duplicateEditItemId
   };
 };
 
-export const setDuplicateItemIndex = (text: any) => {
+export const setDuplicateItemIndex = (duplicateItemIndex: any) => {
   return {
     type: 'DUPLICATE_ITEM_INDEX',
-    text
+    duplicateItemIndex
   };
 };

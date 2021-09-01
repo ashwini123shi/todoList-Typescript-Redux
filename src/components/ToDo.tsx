@@ -10,17 +10,18 @@ const ToDo = ({ id, task, completed }: Props) => {
   const dispatch = useDispatch();
   const [isShown, setIsShown] = useState(true);
 
-  const handleDelete = (id: Number) => {
+  const handleDelete = (id: Number): void => {
     dispatch(deleteTodo(id));
   };
 
   //toggle status of item
-  const handleToggle = (id: Number) => {
+  const handleToggle = (id: Number): void => {
     dispatch(toggleTodo(id));
   };
 
-  const handleEdit = (e: any) => {
+  const handleEdit = (e: any): void => {
     setIsShown(!isShown);
+    console.log(e.currentTarget.value);
     dispatch(editTodo(id, e.currentTarget.value, false));
   };
 

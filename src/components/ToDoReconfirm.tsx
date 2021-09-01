@@ -5,7 +5,7 @@ interface Props {
   taskItem: String
 }
 
-const ToDoReconfirm = ({ taskItem }: Props) => {
+const ToDoReconfirm = ({ taskItem }: Props): React.ReactElement => {
   const dispatch = useDispatch();
   const addDuplicateTask = () => {
     dispatch(addTodo(taskItem));

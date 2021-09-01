@@ -10,7 +10,7 @@ const ToDoForm = (): ReactElement => {
     task: string,
     completed: Boolean,
   }
-  const EmptyField: string = 'fieldId';
+  const EmptyField: string = '';
 
   const [userInput, setUserInput] = useState(EmptyField);
   const [alertVisible, setAlertVisible] = useState(false);
@@ -19,16 +19,16 @@ const ToDoForm = (): ReactElement => {
   const onDismiss = () => setAlertVisible(false);
   const { list, duplicateItem } = useSelector(state => state.todos);
   const dispatch = useDispatch();
-  const handleChange = (e: any) => {
+  const handleChange = (e: any): void => {
     setUserInput(e.currentTarget.value);
   };
-  const handleVisible = () => {
+  const handleVisible = (): void => {
     setAlertVisible(true)
     setTimeout(() => {
       setAlertVisible(false)
     }, 5000);
   }
-  const handleSubmit = (e: any) => {
+  const handleSubmit = (e: any): void => {
     if (userInput !== "") {
       const duplicate = list.find((item: taskProps) => item.task === userInput);
       if (!!duplicate) {
