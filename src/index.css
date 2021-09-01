@@ -1,0 +1,26 @@
+body {
+  margin: 0 auto;
+  font-family: sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+.cursor-ptr {
+  cursor: pointer;
+}
+.strike {
+  text-decoration: line-through;
+}
+.textBlock {
+  width: 80%;
+  float: left;
+}
+.actionBlock {
+  width: 20%;
+  float: right;
+}
