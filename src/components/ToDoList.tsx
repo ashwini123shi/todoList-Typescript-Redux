@@ -4,15 +4,20 @@ import { useSelector, useDispatch } from "react-redux";
 import ToDo from "./ToDo";
 import ToDoEditReconfirm from "./ToDoEditReconfirm";
 //redux action
-import { clearTodoList} from "../redux/todoAction";
+import { clearTodoList } from "../redux/todoAction";
 
-const ToDoList = () => {
+const ToDoList = (): React.ReactElement => {
 
   const dispatch = useDispatch();
   const { list, duplicateEditItem } = useSelector(state => state.todos);
   const handleClearAll = () => {
     dispatch(clearTodoList());
   };
+  type taskProps = {
+    id: number,
+    task: string,
+    completed: Boolean,
+  }
 
   return (
     <>
@@ -21,7 +26,7 @@ const ToDoList = () => {
       )}
 
       <ol className="list-group my-5 border border-light">
-        {list.map((todo) => (
+        {list.map((todo: taskProps) => (
           <li
             key={todo.id}
             className="list-group-item text-capitalize justify-content-between my-2"

@@ -1,13 +1,13 @@
 import React from "react";
-import { useSelector,useDispatch } from "react-redux";
-import { editTodo,setDuplicateEditItem } from "../redux/todoAction";
+import { useSelector, useDispatch } from "react-redux";
+import { editTodo, setDuplicateEditItem } from "../redux/todoAction";
 
 
-const ToDoEditReconfirm = () => {
+const ToDoEditReconfirm = (): React.ReactElement => {
   const dispatch = useDispatch();
-  const {duplicateEditItem,duplicateEditItemId,duplicateItemIndex } = useSelector(state => state.todos);
+  const { duplicateEditItem, duplicateEditItemId, duplicateItemIndex } = useSelector(state => state.todos);
   const handleDuplicateEdit = () => {
-    dispatch(editTodo(duplicateEditItemId,duplicateEditItem,true));//send id,value to reducer
+    dispatch(editTodo(duplicateEditItemId, duplicateEditItem, true));//send id,value to reducer
   };
 
   const handleEditDiscard = () => {
@@ -28,7 +28,7 @@ const ToDoEditReconfirm = () => {
         </span>
 
         <span
-         onClick={() => handleEditDiscard()}
+          onClick={() => handleEditDiscard()}
           className="mx-2 text-danger cursor-ptr"
         >
           Discard

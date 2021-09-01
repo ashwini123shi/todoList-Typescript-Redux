@@ -1,35 +1,43 @@
-import React, { useState } from "react";
+import React, { ReactElement, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addTodo, setDuplicateItem } from "../redux/todoAction";
 import { Alert } from "reactstrap"
 //component
 import ToDoReconfirm from "./ToDoReconfirm";
-const ToDoForm = () => {
-  const [userInput, setUserInput] = useState(undefined);
+const ToDoForm = (): ReactElement => {
+  type taskProps = {
+    id: number,
+    task: string,
+    completed: Boolean,
+  }
+  const EmptyField: string = 'fieldId';
+
+  const [userInput, setUserInput] = useState(EmptyField);
   const [alertVisible, setAlertVisible] = useState(false);
-  
+
+
   const onDismiss = () => setAlertVisible(false);
   const { list, duplicateItem } = useSelector(state => state.todos);
   const dispatch = useDispatch();
-  const handleChange = (e) => {
+  const handleChange = (e: any) => {
     setUserInput(e.currentTarget.value);
   };
-  const handleVisible = () => { 
+  const handleVisible = () => {
     setAlertVisible(true)
-    setTimeout(() => { 
-        setAlertVisible(false)
+    setTimeout(() => {
+      setAlertVisible(false)
     }, 5000);
-} 
-  const handleSubmit = (e) => {
+  }
+  const handleSubmit = (e: any) => {
     if (userInput !== "") {
-      const duplicate = list.find((item) => item.task === userInput);
+      const duplicate = list.find((item: taskProps) => item.task === userInput);
       if (!!duplicate) {
         dispatch(setDuplicateItem(duplicate.task));
       } else {
         dispatch(addTodo(userInput));
         handleVisible();
       }
-      setUserInput("");
+      setUserInput(EmptyField);
     }
   };
   return (

@@ -1,8 +1,11 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { addTodo, setDuplicateItem } from "../redux/todoAction";
+interface Props {
+  taskItem: String
+}
 
-const ToDoReconfirm = ({ taskItem }) => {
+const ToDoReconfirm = ({ taskItem }: Props) => {
   const dispatch = useDispatch();
   const addDuplicateTask = () => {
     dispatch(addTodo(taskItem));

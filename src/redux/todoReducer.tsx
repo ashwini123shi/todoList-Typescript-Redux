@@ -1,5 +1,18 @@
+interface todoState {
+  counter: Number,
+  list: any,
+  duplicateItem: any,
+  duplicateEditItem: any,
+  duplicateEditItemId: any,
+  duplicateItemIndex: any,
+};
+interface taskItem {
+  id: Number,
+  task: String,
+  completed: Boolean
+}
 
-const initalState = {
+const initalState: todoState = {
   counter: 0,
   list: [{ id: 0, task: "list 1", completed: false }],
   duplicateItem: '',
@@ -8,65 +21,65 @@ const initalState = {
   duplicateItemIndex: ''
 };
 
-const addTodo=(state,action)=>{
-  state.counter++;
-  state.list=[
+const addTodo = (state: todoState, action: any) => {
+  state.counter = Number(state.counter) + 1;
+  state.list = [
     ...state.list,
     { id: state.counter, task: action.task, completed: false }
   ];
   state.duplicateItem = false;
 };
-const updateTodo=(state,action)=>{
-  if (!!state.list.find((item) => item.task === action.UpdatedTask)) {
+const updateTodo = (state: todoState, action: any) => {
+  if (!!state.list.find((item: taskItem) => item.task === action.UpdatedTask)) {
     //fetch indexes of duplicate item
 
-    let duplicateIndexes=state.list.map((item, index) =>item.task === action.UpdatedTask ? index++ : undefined).filter(x => x);
+    let duplicateIndexes = state.list.map((item: taskItem, index: Number) => item.task === action.UpdatedTask ? Number(index) + 1 : undefined).filter(x => x);
 
-    let index = state.list.findIndex((item) => item.task === action.UpdatedTask);
+    let index = state.list.findIndex((item: taskItem) => item.task === action.UpdatedTask);
     if (state.list[index].id !== action.id) {
       state.duplicateItemIndex = duplicateIndexes.toString();
       state.duplicateEditItem = action.UpdatedTask;
       state.duplicateEditItemId = action.id;
     }
     if (action.isUpdateDuplicate) {
-      state.list[state.list.findIndex((item) => item.id === Number(action.id))].task = action.UpdatedTask;
+      state.list[state.list.findIndex((item: taskItem) => item.id === Number(action.id))].task = action.UpdatedTask;
       state.duplicateEditItem = false;
     }
   } else {
-    state.list[state.list.findIndex((item) => item.id === Number(action.id))].task = action.UpdatedTask;
+    state.list[state.list.findIndex((item: taskItem) => item.id === Number(action.id))].task = action.UpdatedTask;
   }
 }
 
-const deleteTodo=(state,action)=>{
-  state.list=state.list.filter(item => item.id !== Number(action.id));
+const deleteTodo = (state: todoState, action: any) => {
+  state.list = state.list.filter(item => item.id !== Number(action.id));
   state.duplicateItem = false;
 };
 
-const toggleTodo=(state,action)=>{
-  state.list=state.list.map(todo =>
+const toggleTodo = (state: todoState, action: any) => {
+  state.list = state.list.map(todo =>
     todo.id === Number(action.id) ? { ...todo, completed: !todo.completed } : todo
   );
 };
 
-const clearTodoList=(state)=>{
+const clearTodoList = (state: todoState) => {
   state.list = [{ id: 0, task: "list 1", completed: false }];
   state.counter = 0;
   state.duplicateItem = '';
   state.duplicateEditItem = '';
   state.duplicateEditItemId = 0;
-  state.duplicateItemIndex ='';
+  state.duplicateItemIndex = '';
 };
 
-const todos = (state = initalState, action) => {
-  
+const todos = (state: todoState = initalState, action: any) => {
+
   switch (action.type) {
     case 'ADD_TODO':
-      addTodo(state,action);
+      addTodo(state, action);
       return {
-       ...state
+        ...state
       };
     case 'EDIT_TODO':
-      updateTodo(state,action);
+      updateTodo(state, action);
       return {
         ...state
       };
@@ -76,12 +89,12 @@ const todos = (state = initalState, action) => {
         ...state
       };
     case 'DELETE_TODO':
-      deleteTodo(state,action);
+      deleteTodo(state, action);
       return {
         ...state
       };
     case 'TOGGLE_TODO':
-      toggleTodo(state,action);
+      toggleTodo(state, action);
       return {
         ...state
       };
