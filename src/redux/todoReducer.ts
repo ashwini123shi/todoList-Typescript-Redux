@@ -1,6 +1,8 @@
 interface taskItem {
   id: Number,
   task: String,
+  priority: String,
+  star: Number,
   completed: Boolean
 }
 interface todoState {
@@ -15,7 +17,7 @@ interface todoState {
 
 const initalState: todoState = {
   counter: 0,
-  list: [{ id: 0, task: "list 1", completed: false }],
+  list: [{ id: 0, task: "list 1", priority: "high", star: 3, completed: false }],
   duplicateItem: '',
   duplicateEditItem: '',
   duplicateEditItemId: 0,
@@ -27,7 +29,7 @@ const addTodo = (state: todoState, action: any) => {
   state.counter = Number(state.counter) + 1;
   state.list = [
     ...state.list,
-    { id: state.counter, task: action.task, completed: false }
+    { id: state.counter, task: action.taskItem.task, priority: action.taskItem.priority, star: action.taskItem.star, completed: false }
   ];
   state.duplicateItem = false;
 };

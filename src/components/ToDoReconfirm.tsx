@@ -1,14 +1,16 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { addTodo, setDuplicateItem } from "../redux/todoAction";
-interface Props {
-  taskItem: String
+interface taskItem {
+  task: String,
+  priority: String,
+  star: number
 }
 
-const ToDoReconfirm = ({ taskItem }: Props): React.ReactElement => {
+const ToDoReconfirm = ({ task, priority, star }: any): React.ReactElement => {
   const dispatch = useDispatch();
   const addDuplicateTask = () => {
-    dispatch(addTodo(taskItem));
+    dispatch(addTodo({ task, priority, star }));
   };
 
   const handleDiscard = () => {
@@ -17,7 +19,7 @@ const ToDoReconfirm = ({ taskItem }: Props): React.ReactElement => {
 
   return (
     <div className="card card-body my-3">
-      <h5>Dupicate task {taskItem}, Still you want to Add?</h5>
+      <h5>Dupicate task {task}, Still you want to Add?</h5>
       <div className="row">
         <span
           onClick={() => { addDuplicateTask() }}

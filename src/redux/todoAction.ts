@@ -1,8 +1,13 @@
-
-export const addTodo = (task: String) => {
+interface taskItem {
+  task: String,
+  priority: String,
+  star: number
+}
+export const addTodo = (taskItem: taskItem,) => {
   return {
     type: 'ADD_TODO',
-    task
+    taskItem
+
   };
 };
 
