@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { editTodo, deleteTodo, toggleTodo, setDuplicateItem } from "../redux/todoAction";
+import { Link } from 'react-router-dom';//router
+
 interface Props {
   id: Number,
   task: String,
@@ -31,7 +33,8 @@ const ToDo = ({ id, task, completed }: Props) => {
 
 
   return (
-    <>
+    <div>
+
       <div className="textBlock">
         {isShown && <div style={styled} onClick={() => setIsShown(!isShown)}>{task}</div>}
         {!isShown && (
@@ -67,8 +70,16 @@ const ToDo = ({ id, task, completed }: Props) => {
             aria-hidden="true"
           ></i>
         </span>
+        <span className="mx-2 text-success cursor-ptr">
+          <Link to={`/todo/${id}`}>
+            <i
+              className="fa fa-eye"
+              aria-hidden="true"
+            ></i>
+          </Link>
+        </span>
       </div>
-    </>
+    </div>
   );
 };
 

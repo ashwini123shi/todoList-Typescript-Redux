@@ -1,8 +1,23 @@
 import React from "react";
+import { Link } from 'react-router-dom';
 
 const Header: React.FunctionComponent = () => {
   return (<header>
-    <h3 className="text-capitalize text-center">To Do List</h3>
+    <nav>
+      <div className="logo text-capitalize text-center">To Do List</div>
+
+      <ul className="nav-links">
+        <Link to="/">
+          <li>Home</li>
+        </Link>
+        <Link to="/add-item">
+          <li>Add Item</li>
+        </Link>
+        {/* <li className="nav-item">
+          <a className="nav-link active" href="#">List</a>
+        </li> */}
+      </ul>
+    </nav>
   </header>);
 };
 

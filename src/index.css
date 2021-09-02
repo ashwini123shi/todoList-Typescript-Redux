@@ -24,3 +24,24 @@ code {
   width: 20%;
   float: right;
 }
+.logo{
+  width: 20%;
+}
+
+nav{
+  display:flex;
+  justify-content: space-around;
+  align-items: center;
+  min-height: 10vh;
+  background: rgb(1, 19, 26);
+  color: #fff;
+}
+.nav-links{
+  display: flex;
+  width: 50%;
+  justify-content: space-around;
+  align-items: center;
+  list-style: none;
+  color: #fff;
+
+}
