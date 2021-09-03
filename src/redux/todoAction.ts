@@ -20,6 +20,14 @@ export const editTodo = (id: Number, UpdatedTask: String, isUpdateDuplicate?: Bo
   };
 };
 
+export const editTodoRow = (id: Number, taskItem: taskItem) => {
+  return {
+    type: 'EDIT_TODO_ROW',
+    id,
+    taskItem
+  };
+};
+
 export const clearTodoList = () => {
   return {
     type: 'CLEAR_TODO_LIST'

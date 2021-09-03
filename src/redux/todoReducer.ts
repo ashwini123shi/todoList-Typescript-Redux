@@ -55,6 +55,15 @@ const updateTodo = (state: todoState, action: any) => {
   }
 }
 
+const updateTodoRow = (state: todoState, action: any) => {
+
+  //console.log(action.taskItem)
+  state.list[state.list.findIndex((item: taskItem) => item.id === Number(action.id))].task = action.taskItem.task;
+  state.list[state.list.findIndex((item: taskItem) => item.id === Number(action.id))].priority = action.taskItem.priority;
+  state.list[state.list.findIndex((item: taskItem) => item.id === Number(action.id))].star = action.taskItem.star;
+
+}
+
 const deleteTodo = (state: todoState, action: any): void => {
   state.list = state.list.filter(item => item.id !== Number(action.id));
   state.duplicateItem = false;
@@ -67,7 +76,7 @@ const toggleTodo = (state: todoState, action: any) => {
 };
 
 const clearTodoList = (state: todoState) => {
-  state.list = [{ id: 0, task: "list 1", completed: false }];
+  state.list = [{ id: 0, task: "list 1", priority: 'high', star: 0, completed: false }];
   state.counter = 0;
   state.duplicateItem = '';
   state.duplicateEditItem = '';
@@ -85,6 +94,11 @@ const todos = (state: todoState = initalState, action: any) => {
       };
     case 'EDIT_TODO':
       updateTodo(state, action);
+      return {
+        ...state
+      };
+    case 'EDIT_TODO_ROW':
+      updateTodoRow(state, action);
       return {
         ...state
       };
