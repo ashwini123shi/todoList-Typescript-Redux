@@ -7,7 +7,11 @@ module.exports = {
   devServer: {
     hot: true,
     open: true,
+    historyApiFallback: true,
   },
+  // devServer: {
+  //   historyApiFallback: true,
+  // },
   plugins: [
     new ReactRefreshWebpackPlugin(),
     new webpack.DefinePlugin({
