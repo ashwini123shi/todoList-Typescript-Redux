@@ -10,9 +10,9 @@ import "../index.css";
 //components
 import Home from "./Home";
 import Header from "./Header";
-import ToDoForm from "./ToDoForm";
 
 import TodoDetails from "./TodoDetails";
+import ToDoFormContainer from "./ToDoFormContainer";
 
 const TodoApp = (): React.ReactElement => {
 
@@ -25,7 +25,7 @@ const TodoApp = (): React.ReactElement => {
             <Switch>
               <Route path="/" exact component={Home} />
               <Route path="/todo/:id" component={TodoDetails} />
-              <Route path="/add-item" component={ToDoForm} />
+              <Route path="/add-item" component={ToDoFormContainer} />
             </Switch>
           </div>
         </Row>

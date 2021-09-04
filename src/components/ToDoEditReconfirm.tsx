@@ -1,13 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { editTodo, setDuplicateEditItem } from "../redux/todoAction";
+import { Alert } from "reactstrap";
 
 
 const ToDoEditReconfirm = (): React.ReactElement => {
   const dispatch = useDispatch();
   const { duplicateEditItem, duplicateEditItemId, duplicateItemIndex } = useSelector(state => state.todos);
+  const [alertVisible, setAlertVisible] = useState(false);
   const handleDuplicateEdit = (): void => {
     dispatch(editTodo(duplicateEditItemId, duplicateEditItem, true));//send id,value to reducer
+    setAlertVisible(true)
   };
 
   const handleEditDiscard = (): void => {
@@ -34,6 +37,9 @@ const ToDoEditReconfirm = (): React.ReactElement => {
           Discard
         </span>
       </div>
+      <Alert isOpen={alertVisible} fade={false} color="success" className="mt-3">
+        Todo  details saved successfully
+      </Alert>
     </div>
   );
 };

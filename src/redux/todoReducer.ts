@@ -61,7 +61,7 @@ const updateTodoRow = (state: todoState, action: any) => {
   state.list[state.list.findIndex((item: taskItem) => item.id === Number(action.id))].task = action.taskItem.task;
   state.list[state.list.findIndex((item: taskItem) => item.id === Number(action.id))].priority = action.taskItem.priority;
   state.list[state.list.findIndex((item: taskItem) => item.id === Number(action.id))].star = action.taskItem.star;
-
+  state.duplicateItem = false;
 }
 
 const deleteTodo = (state: todoState, action: any): void => {

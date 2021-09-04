@@ -1,16 +1,26 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { addTodo, setDuplicateItem } from "../redux/todoAction";
-interface taskItem {
+import { addTodo, editTodoRow, setDuplicateItem } from "../redux/todoAction";
+import { useParams } from "react-router-dom";
+interface TaskItem {
   task: String,
   priority: String,
   star: number
 }
 
-const ToDoReconfirm = ({ task, priority, star }: any): React.ReactElement => {
+const ToDoReconfirm = ({ taskItem, showAlert }: any): React.ReactElement => {
   const dispatch = useDispatch();
+  let { id } = useParams();
+  console.log("param", id);
   const addDuplicateTask = () => {
-    dispatch(addTodo({ task, priority, star }));
+    if (id) {
+      dispatch(editTodoRow(id, taskItem));
+      showAlert();
+    } else {
+      console.log(taskItem);
+      dispatch(addTodo(taskItem));
+      showAlert();
+    }
   };
 
   const handleDiscard = () => {
@@ -19,13 +29,13 @@ const ToDoReconfirm = ({ task, priority, star }: any): React.ReactElement => {
 
   return (
     <div className="card card-body my-3">
-      <h5>Dupicate task {task}, Still you want to Add?</h5>
+      <h5>Dupicate task {taskItem.task}, Still you want to Add?</h5>
       <div className="row">
         <span
           onClick={() => { addDuplicateTask() }}
           className="mx-2 text-success cursor-ptr"
         >
-          Add
+          Proceed
         </span>
 
         <span onClick={() => { handleDiscard() }} className="mx-2 text-danger cursor-ptr">

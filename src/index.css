@@ -107,3 +107,7 @@ nav{
     -moz-pointer-events: none;
     pointer-events: none;
 }
+
+.error {
+  color: red;
+}
