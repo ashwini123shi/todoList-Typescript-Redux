@@ -11,8 +11,12 @@ const Header: React.FunctionComponent = () => {
           <li>Home</li>
         </Link>
 
-        <Link to="/add-item">
+        {/* <Link to="/add-item">
           <li>Add Item</li>
+        </Link> */}
+
+        <Link to="/user-list">
+          <li>user List</li>
         </Link>
         {/* <li className="nav-item">
           <a className="nav-link active" href="#">List</a>

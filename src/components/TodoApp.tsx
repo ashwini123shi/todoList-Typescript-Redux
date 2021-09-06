@@ -13,6 +13,9 @@ import Header from "../components/Header";
 
 import TodoDetails from "./ToDo/TodoDetails";
 import ToDoFormContainer from "./ToDo/ToDoFormContainer";
+import UserList from "./AxiosApp/UserList";
+import UserView from "./AxiosApp/UserView";
+import UserEditContainer from "./AxiosApp/UserEditContainer";
 
 const TodoApp = (): React.ReactElement => {
 
@@ -26,6 +29,9 @@ const TodoApp = (): React.ReactElement => {
               <Route path="/" exact component={Home} />
               <Route path="/todo/:id" component={TodoDetails} />
               <Route path="/add-item" component={ToDoFormContainer} />
+              <Route path="/user-list" component={UserList} />
+              <Route path="/view-user/:id" component={UserView} />
+              <Route path="/edit-user/:id" component={UserEditContainer} />
             </Switch>
           </div>
         </Row>

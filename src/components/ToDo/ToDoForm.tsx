@@ -68,7 +68,7 @@ const ToDoForm = ({ taskItem, isAddMode, actionCompleted, handleSubmit }: Props)
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
             value={formik.values.task.toString()}
-            disabled={!!duplicateItem}
+          // disabled={!!duplicateItem}
           />
           {formik.touched.task && formik.errors.task ? (
             <div className='error'>{formik.errors.task}</div>
