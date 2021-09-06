@@ -17,6 +17,7 @@
   "author": "Ashwini",
   "license": "MIT",
   "dependencies": {
+    "axios": "^0.21.3",
     "bootstrap": "4.5.2",
     "font-awesome": "^4.7.0",
     "react": "^17.0.1",

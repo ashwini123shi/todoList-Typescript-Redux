@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { addTodo, editTodoRow, setDuplicateItem } from "../redux/todoAction";
+import { addTodo, editTodoRow, setDuplicateItem } from "../../redux/todoAction";
 import { useParams } from "react-router-dom";
 interface TaskItem {
   task: String,

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { editTodo, deleteTodo, toggleTodo, setDuplicateItem } from "../redux/todoAction";
+import { editTodo, deleteTodo, toggleTodo, setDuplicateItem } from "../../redux/todoAction";
 import { Link } from 'react-router-dom';//router
 
 interface Props {

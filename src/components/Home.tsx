@@ -1,7 +1,7 @@
 import React from "react";
-import { Link } from 'react-router-dom';
-import ToDoList from "./ToDoList";
-import ToDoFormContainer from "./ToDoFormContainer";
+import ToDoList from "./ToDo/ToDoList";
+import ToDoFormContainer from "./ToDo/ToDoFormContainer";
+
 
 const Home: React.FunctionComponent = (props: any) => {
 

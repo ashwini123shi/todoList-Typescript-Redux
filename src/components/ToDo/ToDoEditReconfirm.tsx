@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { editTodo, setDuplicateEditItem } from "../redux/todoAction";
+import { editTodo, setDuplicateEditItem } from "../../redux/todoAction";
 import { Alert } from "reactstrap";
 
 

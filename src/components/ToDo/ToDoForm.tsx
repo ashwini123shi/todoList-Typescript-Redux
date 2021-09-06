@@ -3,11 +3,8 @@ import { useFormik } from 'formik';
 import * as Yup from 'yup'
 import { Alert } from "reactstrap";
 import { useSelector } from "react-redux";
-
-//import '../css/formStyle.css'
 //component
 import ToDoReconfirm from "./ToDoReconfirm";
-import ToDoEditReconfirm from "./ToDoEditReconfirm";
 
 interface TaskItem {
   task: String,
@@ -19,7 +16,6 @@ const validationSchema = Yup.object().shape({
   task: Yup.string().required('Task is Required'),
   priority: Yup.string()
     .required('Priority is Required'),
-  // star: Yup.number().required('Star is Required')
   star: Yup.number().required('Star is Required').oneOf([1, 2, 3, 4, 5])
 });
 const ToDoForm = ({ taskItem, isAddMode, actionCompleted, handleSubmit }: Props): ReactElement => {

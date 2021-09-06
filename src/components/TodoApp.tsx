@@ -8,11 +8,11 @@ import Row from 'react-bootstrap/Row';
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../index.css";
 //components
-import Home from "./Home";
-import Header from "./Header";
+import Home from "../components/Home";
+import Header from "../components/Header";
 
-import TodoDetails from "./TodoDetails";
-import ToDoFormContainer from "./ToDoFormContainer";
+import TodoDetails from "./ToDo/TodoDetails";
+import ToDoFormContainer from "./ToDo/ToDoFormContainer";
 
 const TodoApp = (): React.ReactElement => {
 

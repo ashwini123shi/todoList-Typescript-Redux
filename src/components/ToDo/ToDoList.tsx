@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import ToDo from "./ToDo";
 import ToDoEditReconfirm from "./ToDoEditReconfirm";
 //redux action
-import { clearTodoList } from "../redux/todoAction";
+import { clearTodoList } from "../../redux/todoAction";
 
 const ToDoList = (): React.ReactElement => {
 

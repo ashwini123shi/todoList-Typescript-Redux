@@ -1,6 +1,6 @@
 import { ReactElement, useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addTodo, editTodo, editTodoRow, setDuplicateItem } from "../redux/todoAction";
+import { addTodo, editTodo, editTodoRow, setDuplicateItem } from "../../redux/todoAction";
 
 //component
 import ToDoForm from "./ToDoForm";
