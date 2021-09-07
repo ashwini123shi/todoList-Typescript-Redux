@@ -18,6 +18,9 @@ const Header: React.FunctionComponent = () => {
         <Link to="/user-list">
           <li>user List</li>
         </Link>
+        <Link to="/post-list">
+          <li>Posts</li>
+        </Link>
         {/* <li className="nav-item">
           <a className="nav-link active" href="#">List</a>
         </li> */}

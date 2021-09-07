@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { getUserListData } from './DataLayer/DatalayerUtilities';
+import { getUserListData } from '../AxiosApp/DataLayer/DatalayerUtilities';
 
-//components
-import User from "./User";
 /****gql */
 import {
     useQuery,
@@ -28,26 +26,26 @@ interface ListProps {
     avatar: string;
 }
 
-const UserList = (props: any) => {
+const PostList = (props: any) => {
     const [userId, setuserId] = React.useState(-1);
     const [postId, setPostId] = React.useState(-1);
     const [list, setList] = useState([]);
     const queryClient = useQueryClient();
 
-    useEffect(() => {
-        // handlerUserList();
+    // useEffect(() => {
+    //     // handlerUserList();
 
-        axios.get("https://reqres.in/api/users?page=2")
-            .then(response => {
-                //console.log(response.data);
-                setList(response.data.data);
-                console.log(list);
-            })
-            .catch(error => {
-                console.log(error)
-            })
+    //     axios.get("https://reqres.in/api/users?page=2")
+    //         .then(response => {
+    //             //console.log(response.data);
+    //             setList(response.data.data);
+    //             console.log(list);
+    //         })
+    //         .catch(error => {
+    //             console.log(error)
+    //         })
 
-    });
+    // });
     const handlerUserList = async () => {
         const responseData = await getUserListData();
         console.log('list', responseData.data)
@@ -59,7 +57,7 @@ const UserList = (props: any) => {
     return (
         <>
             <h4>List Page</h4>
-            {/* <QueryClientProvider client={queryClient}>
+            <QueryClientProvider client={queryClient}>
 
                 {postId > -1 ? (
                     <Post postId={postId} setPostId={setPostId} />
@@ -67,34 +65,12 @@ const UserList = (props: any) => {
                     <Posts setPostId={setPostId} />
                 )}
                 <ReactQueryDevtools initialIsOpen />
-            </QueryClientProvider> */}
+            </QueryClientProvider>
             {/* {query.data.map(user => (
                 <li key={user.id}>{user.first_name}</li>
             ))} */}
 
-            {!!list && (
-                <table className="table table-striped table-bordered" >
-                    <thead>
-                        <tr>
-                            <th>Name</th>
-                            <th>Email</th>
-                            <th>View|Delete</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {list.map((user: ListProps) => (
-                            <tr
-                                key={user.id}
-                                className=""
-                            >
-                                <User
-                                    {...user}
-                                />
-                            </tr>
-                        ))}
-                    </tbody>
-                </table>
-            )}
+
 
         </>
     );
@@ -224,5 +200,5 @@ function Post({ postId, setPostId }) {
     );
 }
 
-export default UserList;
+export default PostList;
 

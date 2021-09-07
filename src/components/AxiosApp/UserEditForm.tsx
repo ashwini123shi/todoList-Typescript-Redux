@@ -4,6 +4,7 @@ import axios from "axios";
 import { Field, Formik, FormikHelpers } from 'formik';
 import * as Yup from 'yup';
 import { FormControl } from "react-bootstrap";
+import { mockablePostData, mockablePutData } from './DataLayer/DatalayerUtilities';
 
 interface userProps {
     id: number;
@@ -22,11 +23,22 @@ const UserEditSchema = Yup.object().shape({
 const UserEditForm = ({ userObject, isAddMode, actionCompleted, handleSubmit }: Props): ReactElement => {
 
     let { id } = useParams();
-    console.log("param", id);
-    const [user, setuser] = useState({ "id": 0, "email": "", "first_name": "", "last_name": "", "avatar": "" });
+
     const initialValues = {
         first_name: userObject?.first_name || '', last_name: userObject?.last_name || ''
     };
+    const handlerPutRequest = async (values) => {
+        // const responseData = await mockablePutData(values);
+        // alert(JSON.stringify(responseData, null, 2));
+        const res = await axios.put('https://reqres.in/api/users', values);
+        alert(JSON.stringify(res, null, 2));
+    }
+    const handlerPostRequest = async (values) => {
+        // const responseData = await mockablePutData(values);
+        // alert(JSON.stringify(responseData, null, 2));
+        const res = await axios.post('https://reqres.in/api/users', values);
+        alert(JSON.stringify(res, null, 2));
+    }
     return (
         <>
 
@@ -34,10 +46,16 @@ const UserEditForm = ({ userObject, isAddMode, actionCompleted, handleSubmit }: 
                 initialValues={initialValues}
                 validationSchema={UserEditSchema}
                 onSubmit={(values, actions) => {
-                    setTimeout(() => {
-                        alert(JSON.stringify(values, null, 2));
-                        actions.setSubmitting(false);
-                    }, 1000);
+                    console.log(values);
+
+                    handlerPutRequest(values);
+                    handlerPostRequest({ email: 'michael.lawson@reqres.in', first_name: 'Michael', last_name: 'Lawson', avatar: 'https://reqres.in/img/faces/7-image.jpg' });
+                    //  res.data.json;
+                    // console.log(res.data.json)
+                    // setTimeout(() => {
+                    //     alert(JSON.stringify(values, null, 2));
+                    //     actions.setSubmitting(false);
+                    // }, 1000);
                 }}
             >
                 {formik => (

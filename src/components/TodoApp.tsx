@@ -16,6 +16,7 @@ import ToDoFormContainer from "./ToDo/ToDoFormContainer";
 import UserList from "./AxiosApp/UserList";
 import UserView from "./AxiosApp/UserView";
 import UserEditContainer from "./AxiosApp/UserEditContainer";
+import PostList from "./ReactQuery/PostList";
 
 const TodoApp = (): React.ReactElement => {
 
@@ -32,6 +33,8 @@ const TodoApp = (): React.ReactElement => {
               <Route path="/user-list" component={UserList} />
               <Route path="/view-user/:id" component={UserView} />
               <Route path="/edit-user/:id" component={UserEditContainer} />
+              <Route path="/post-list" component={PostList} />
+
             </Switch>
           </div>
         </Row>

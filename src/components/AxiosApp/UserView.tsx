@@ -12,14 +12,14 @@ interface Props {
 const UserView = () => {
 
     let { id } = useParams();
-    console.log("param", id);
+    // console.log("param", id);
     const [user, setuser] = useState({ "id": 0, "email": "", "first_name": "", "last_name": "", "avatar": "" });
     useEffect(() => {
         axios.get(`https://reqres.in/api/users/${id}`)
             .then(response => {
                 //console.log(response.data);
                 setuser(response.data.data);
-                console.log(user);
+                // console.log(user);
             })
             .catch(error => {
                 console.log(error)
