@@ -11,6 +11,7 @@ import {
 import { ReactQueryDevtools } from "react-query/devtools";
 import { request, gql } from "graphql-request";
 import axios from "axios";
+import DefaultQuery from "./DefaultQuery";
 
 const endpoint = "https://graphqlzero.almansi.me/api";
 
@@ -57,7 +58,7 @@ const PostList = (props: any) => {
     return (
         <>
             <h4>List Page</h4>
-            <QueryClientProvider client={queryClient}>
+            {/* <QueryClientProvider client={queryClient}>
 
                 {postId > -1 ? (
                     <Post postId={postId} setPostId={setPostId} />
@@ -65,10 +66,9 @@ const PostList = (props: any) => {
                     <Posts setPostId={setPostId} />
                 )}
                 <ReactQueryDevtools initialIsOpen />
-            </QueryClientProvider>
-            {/* {query.data.map(user => (
-                <li key={user.id}>{user.first_name}</li>
-            ))} */}
+            </QueryClientProvider> */}
+            <DefaultQuery />
+
 
 
 
