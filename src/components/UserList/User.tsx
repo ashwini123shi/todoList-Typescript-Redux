@@ -2,7 +2,8 @@
 import axios from 'axios';
 import { ReactElement } from 'react';
 import { Link } from 'react-router-dom';//router
-import { mockableDeleteData } from './DataLayer/DatalayerUtilities';
+import { useQuery, useMutation, useQueryClient } from 'react-query';
+import { mockableDeleteData } from '../../services/userService';
 
 interface Props {
     id: number;
@@ -22,8 +23,8 @@ const SingleUser = ({ id, email, first_name, last_name, avatar }: Props): ReactE
             <td className="m-1">{first_name}{last_name}</td>
             <td>{email}</td>
             <td>
-                <Link to={`/view-user/${id}`}> view</Link>|
-                <div onClick={(e) => handleDelete(id)}> Delete</div>
+                <Link to={`/view-user/${id}`}> View</Link>|
+                <span className="delete" onClick={(e) => handleDelete(id)}> Delete</span>
 
             </td>
         </>

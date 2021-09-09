@@ -1,31 +1,25 @@
-import { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
-import axios from "axios";
+import { useQuery } from "react-query";
+import { useParams } from "react-router-dom";
+import { getUserById } from '../../services/userService';
 import UserEditForm from "./UserEditForm";
 
-interface Props {
+type Data = {
     id: number;
     email: string;
     first_name: string;
     last_name: string;
     avatar: string;
 }
+function getUserData(id: number) {
+    return useQuery(["user", id], () => getUserById(id), {
+        enabled: !!id,
+    });
+}
 const UserEditContainer = () => {
 
     let { id } = useParams();
-    console.log("param", id);
-    const [user, setuser] = useState({ "id": 0, "email": "", "first_name": "", "last_name": "", "avatar": "" });
-    useEffect(() => {
-        axios.get(`https://reqres.in/api/users/${id}`)
-            .then(response => {
-                //console.log(response.data);
-                setuser(response.data.data);
-                console.log(user);
-            })
-            .catch(error => {
-                console.log(error)
-            })
-    });
+    const { data: user, isLoading, error } = getUserData(id);
+
     function handleSubmit(fields: any): Boolean {
 
         console.log(fields);

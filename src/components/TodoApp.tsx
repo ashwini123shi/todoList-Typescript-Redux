@@ -1,7 +1,5 @@
 import React from "react";
 import { Switch, Route } from 'react-router-dom';//router
-
-
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 //css
@@ -10,15 +8,12 @@ import "../index.css";
 //components
 import Home from "../components/Home";
 import Header from "../components/Header";
-
 import TodoDetails from "./ToDo/TodoDetails";
 import ToDoFormContainer from "./ToDo/ToDoFormContainer";
-import UserList from "./AxiosApp/UserList";
-import UserView from "./AxiosApp/UserView";
-import UserEditContainer from "./AxiosApp/UserEditContainer";
+import UserList from "./UserList/UserList";
+import UserView from "./UserList/UserView";
+import UserEditContainer from "./UserList/UserEditContainer";
 import PostList from "./ReactQuery/PostList";
-import Mutation from "./ReactQuery/Mutation";
-
 const TodoApp = (): React.ReactElement => {
 
   return (

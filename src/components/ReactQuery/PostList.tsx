@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { getUserListData } from '../AxiosApp/DataLayer/DatalayerUtilities';
+import { getUserList } from '../../services/userService';
 
 /****gql */
 import {
@@ -18,7 +18,7 @@ const endpoint = "https://graphqlzero.almansi.me/api";
 
 const queryClient = new QueryClient();
 
-//import axiosMethodCalls from "./axiosMethodCalls";
+//import axiosService from "./axiosService";
 interface ListProps {
     id: number;
     email: string;
@@ -48,7 +48,7 @@ const PostList = (props: any) => {
 
     // });
     const handlerUserList = async () => {
-        const responseData = await getUserListData();
+        const responseData = await getUserList();
         console.log('list', responseData.data)
         setList(responseData.data);
 

@@ -10,7 +10,7 @@ import {
     useMutation,
 } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
-import { getUserListData } from '../AxiosApp/DataLayer/DatalayerUtilities';
+//import { getUserList } from '../UserList/DataLayer/DatalayerUtilities';
 //components
 
 import { Link } from "react-router-dom";

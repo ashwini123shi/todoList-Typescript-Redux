@@ -1,61 +1,50 @@
-import { ReactElement, useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
-import axios from "axios";
-import { Field, Formik, FormikHelpers } from 'formik';
+import { ReactElement } from "react";
+import { Formik } from 'formik';
 import * as Yup from 'yup';
-import { FormControl } from "react-bootstrap";
-import { mockablePostData, mockablePutData } from './DataLayer/DatalayerUtilities';
+import { updateUser } from '../../services/userService';
+import { useMutation } from 'react-query';
 
-interface userProps {
+type Data = {
     id: number;
+    avatar: string;
     email: string;
     first_name: string;
     last_name: string;
-    avatar: string;
-}
-interface Props { userObject?: userProps; isAddMode: boolean; actionCompleted: boolean; handleSubmit: (fields: any) => void; }
+};
+interface Props { user?: Data; isAddMode: boolean; actionCompleted: boolean; handleSubmit: (fields: any) => void; }
 // Validation rules for password fields
 const UserEditSchema = Yup.object().shape({
     first_name: Yup.string().required('Required'),
     last_name: Yup.string().required('Required')
 
 });
-const UserEditForm = ({ userObject, isAddMode, actionCompleted, handleSubmit }: Props): ReactElement => {
 
-    let { id } = useParams();
+const UserEditForm = ({ user, isAddMode, actionCompleted, handleSubmit }: Props): ReactElement => {
+
 
     const initialValues = {
-        first_name: userObject?.first_name || '', last_name: userObject?.last_name || ''
+        first_name: user?.first_name || '', last_name: user?.last_name || ''
     };
-    const handlerPutRequest = async (values) => {
-        // const responseData = await mockablePutData(values);
-        // alert(JSON.stringify(responseData, null, 2));
-        const res = await axios.put('https://reqres.in/api/users', values);
-        alert(JSON.stringify(res, null, 2));
+    const { mutateAsync, isLoading: isAddingUser, error: addError } = useMutation(
+        updateUser
+    );
+    const handlerUpdateRequest = async (values: {
+        first_name: string;
+        last_name: string;
+    }) => {
+        const updatedUser = await mutateAsync(values);
+        console.log('This was an async mutation!', updatedUser);
     }
-    const handlerPostRequest = async (values) => {
-        // const responseData = await mockablePutData(values);
-        // alert(JSON.stringify(responseData, null, 2));
-        const res = await axios.post('https://reqres.in/api/users', values);
-        alert(JSON.stringify(res, null, 2));
-    }
+
     return (
         <>
+            {isAddingUser ? <p>Updating user...</p> : null}
 
             <Formik
                 initialValues={initialValues}
                 validationSchema={UserEditSchema}
                 onSubmit={(values, actions) => {
-                    console.log(values);
-
-                    handlerPutRequest(values);
-                    handlerPostRequest({ email: 'michael.lawson@reqres.in', first_name: 'Michael', last_name: 'Lawson', avatar: 'https://reqres.in/img/faces/7-image.jpg' });
-                    //  res.data.json;
-                    // console.log(res.data.json)
-                    // setTimeout(() => {
-                    //     alert(JSON.stringify(values, null, 2));
-                    //     actions.setSubmitting(false);
-                    // }, 1000);
+                    handlerUpdateRequest(values);
                 }}
             >
                 {formik => (

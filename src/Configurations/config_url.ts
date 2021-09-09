@@ -1,5 +1,6 @@
 // All Endpoints.
-export const userListUrl: String = `https://reqres.in/api/users?page=2`;
-export const mockablePostUrl = `https://reqres.in/api/users`;
-export const mockablePutUrl = `https://reqres.in/api/users/2`;
-export const mockableDeleteUrl = `https://reqres.in/api/users/2`;
+export const baseUrl: string = `https://reqres.in`;
+export const userListUrl: string = `https://reqres.in/api/users`;
+export const PostUrl: string = `https://reqres.in/api/users`;
+export const PutUrl: string = `https://reqres.in/api/users/2`;
+export const DeleteUrl: string = `https://reqres.in/api/users/2`;

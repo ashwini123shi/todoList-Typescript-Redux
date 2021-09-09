@@ -116,3 +116,7 @@ nav{
 .card{
  width: 18rem
 }
+.delete{
+  cursor: pointer;
+  color:#007bff;
+}
